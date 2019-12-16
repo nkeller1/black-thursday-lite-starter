@@ -49,8 +49,8 @@ sales_engine = SalesEngine.from_csv({
 
 From there we can find the child instances:
 
-*   `items` returns an array of all items (This method will probably (definitely) end up referencing an instance of `ItemCollection`)
-*   `merchants` returns an array of all merchants (This method will probably (definitely) end up referencing an instance of `MerchantCollection`)
+*   `item_collection` returns an array of all items (This method will probably (definitely) end up referencing an instance of `ItemCollection`)
+*   `merchant_collection` returns an array of all merchants (This method will probably (definitely) end up referencing an instance of `MerchantCollection`)
 
 ### `MerchantCollection`
 
@@ -58,7 +58,7 @@ The `MerchantCollection` is responsible for holding and searching our `Merchant`
 instances. It offers the following methods:
 
 *   `all` - returns an array of all known `Merchant` instances
-*   `find()` - returns either `nil` or an instance of `Merchant` with a matching ID
+*   `find(merchant_id)` - returns either `nil` or an instance of `Merchant` with a matching ID
 
 The data can be found in `data/merchants.csv` so the instance is created and used like this:
 
