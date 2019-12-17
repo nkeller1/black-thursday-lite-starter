@@ -1,5 +1,5 @@
-require './lib/item_collection'
-require './lib/merchant_collection'
+require_relative 'item'
+require_relative 'merchant_collection'
 
 class SalesEngine
   attr_reader :item_path, :merchant_path
@@ -16,8 +16,9 @@ class SalesEngine
     @merchant_path = merchant_path
   end
 
-  def item_collection
-    ItemCollection.new(@item_path)
+  def items
+    Item.from_csv(@item_path)
+    Item.all
   end
 
   def merchant_collection
