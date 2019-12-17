@@ -5,7 +5,7 @@ module CsvLoadable
     csv = CSV.read("#{csv_file_path}", headers: true, header_converters: :symbol)
 
     csv.map do |row|
-      Module.const_get(class_name).new(row)
+      Object.const_get(class_name).new(row)
     end
   end
 end
