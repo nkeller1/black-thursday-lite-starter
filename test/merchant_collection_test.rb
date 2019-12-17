@@ -61,5 +61,4 @@ class MerchantCollectionTest < Minitest::Test
 
     assert "New Merchant Name", merchant_to_update.name
   end
-
 end
