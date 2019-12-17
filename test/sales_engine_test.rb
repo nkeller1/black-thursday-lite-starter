@@ -20,7 +20,9 @@ class SalesEngineTest < Minitest::Test
   end
 
   def test_it_can_create_an_item_collection
-    assert_instance_of ItemCollection, @sales_engine.item_collection
+    assert_instance_of Array, @sales_engine.items
+    assert_equal 1367, @sales_engine.items.length
+    assert_instance_of Item, @sales_engine.items.first
   end
 
   def test_it_can_create_a_merchant_collection
