@@ -1,7 +1,9 @@
-require 'csv'
 require_relative 'item'
+require_relative 'csv_loadable'
 
 class Item
+  extend CsvLoadable
+
   @@all = []
 
   def self.all
@@ -9,11 +11,7 @@ class Item
   end
 
   def self.from_csv(file_path)
-    csv = CSV.read("#{file_path}", headers: true, header_converters: :symbol)
-
-    @@all = csv.map do |row|
-       Item.new(row)
-    end
+    @@all = create_instances(file_path, "Item")
   end
 
   def self.find(id)

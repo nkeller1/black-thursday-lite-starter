@@ -1,19 +1,19 @@
 require_relative 'merchant'
-require 'csv'
+require_relative 'csv_loadable'
 
 class MerchantCollection
+  include CsvLoadable
+
   attr_reader :merchants
 
   def initialize(csv_file_path)
-    @merchants = create_merchants(csv_file_path)
+    @merchants = create_instances(csv_file_path, "Merchant")
   end
 
-  def create_merchants(csv_file_path)
-    csv = CSV.read("#{csv_file_path}", headers: true, header_converters: :symbol)
-    csv.map do |row|
-       Merchant.new(row)
-    end
-  end
+  #
+  # def create_merchants(csv_file_path)
+  #   create_instances(csv_file_path, self.class.name)
+  # end
 
   def all
     @merchants
